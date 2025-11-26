@@ -26,8 +26,14 @@ int main() {
 
     // variaveis para cada "argumento"
 
-    // prinf(pedindo 3 informações);
+    // printf(pedindo 3 informações);
+    // scanf("%d%f%c");
+    // voce poderia digitar um int, float e um char
 
+
+    // limpando o buffer do teclado usando getchar()
+    // o getchar() é usado para capturar um caractere de espaço (' ')
+    // coisa que atrapalha muito
 
     
 
