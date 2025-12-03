@@ -1,2 +1,3 @@
 # Linguagem-C
-practicing C language
+practicing C language in linux x86-64
+
