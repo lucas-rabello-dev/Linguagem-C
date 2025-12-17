@@ -6,7 +6,7 @@ int main() {
     unsigned int number = 10;
     unsigned int num = -10; // se fosse for imprimir ele provavelmente vai retornar um número completamente errado
     
-    printf("%u", num);
+    printf("%u", number);
 
     return 0;
 }
