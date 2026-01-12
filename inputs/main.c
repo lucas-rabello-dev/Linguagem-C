@@ -35,10 +35,13 @@ int main() {
     // o getchar() é usado para capturar um caractere de espaço (' ')
     // coisa que atrapalha muito
 
-    char sla[30];
-    fgets(sla, sizeof(sla), stdin);
-    printf("%s", sla);
+    // fgets() serve para ler um array de caracteres vulgo string
+    // ele espera um \n para o final da leitura
+    //char sla[30];
+    //fgets(sla, sizeof(sla), stdin);
+    //printf("%s", sla);
 
+    // eu ia escrever sobre a funcao gets() porem eh recomendado nao usar essa funcao pois ela eh perigosa e foi descontinuada no C99
 
     return 0;
 }
