@@ -5,7 +5,7 @@ int main(int argc, char *argv[]) {
 
     printf("%d", argc);
 
-    for (int i = 0; i < sizeof(*argv) / sizeof(*argv[1]); i++) {
+    for (int i = 0; i < argc; i++) {
         printf("%s ", argv[i]);
     }
     printf("\n");
