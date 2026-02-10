@@ -55,5 +55,7 @@ int main() {
     strcpy(pessoa3.cpf, "cpf aqui");
     pessoa3.idade = 33;
     
+    printf("%lu", sizeof(pessoa1));
+    
     return 0;
 }
