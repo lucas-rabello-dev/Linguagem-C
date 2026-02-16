@@ -14,9 +14,17 @@ calculado sobre o salário bruto.
 */
 void info_funcionario();
 
+/*
+Faça um algoritmo para ler as três notas de um aluno em uma disciplina e exibe a sua
+média ponderada (as notas tem pesos respectivos de 1, 2 e 3).
+*/
+void maiorNota();
+
+
 int main() {
-    celcius_to_fahrenheit(100);
-    info_funcionario();
+    // celcius_to_fahrenheit(100);
+    // info_funcionario();
+    maiorNota();
     
     return 0;
 }
@@ -55,5 +63,20 @@ void info_funcionario() {
     double result = salario + aumentoPorFilho;
     
     printf("O salario de %s sera de: %lf \n", nome, result);
- 
+}
+
+void maiorNota() {
+    
+    int nota1, nota2, nota3;
+    printf("Digite 3 notas sequencialmente: ");
+    scanf("%d%d%d", &nota1, &nota2, &nota3);
+    
+    // fiz esses macros pra entender, mesmo que seja feio fazer isso
+    #define peso1 1.0
+    #define peso2 2.0
+    #define peso3 3.0
+    
+    double result = ((nota1 * peso1) + (nota2 * peso2) + (nota3 * peso3)) / (peso1 + peso2 + peso3);
+    
+    printf("Media ponderada: %.2lf \n", result);
 }
