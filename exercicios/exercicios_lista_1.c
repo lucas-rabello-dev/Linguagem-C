@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdio.h>
 
 // Todos os algoritmos construídos devem ser do tipo sequencial. Sem utilizar seleção e repetição.
@@ -20,11 +21,33 @@ média ponderada (as notas tem pesos respectivos de 1, 2 e 3).
 */
 void maiorNota();
 
+/*
+    Faça um algoritmo que receba o ano de nascimento de uma pessoa e o ano atual, calcule
+    e mostre:
+    a) a idade dessa pessoa em anos;
+    b) a idade dessa pessoa em meses;
+    c) a idade dessa pessoa em dias;
+    d) a idade dessa pessoa em semanas.
+*/
+void idadePessoa(int anoNascimento, int anoAtual);
+
+/*
+João Felipe recebeu seu salário de R$ 1200,00 (líquido) e precisa pagar duas contas C1
+e C2. Como as contas estão atrasadas, João terá de pagar multa de 2% sobre cada conta,
+mais o percentual de 1/30 avos por dia de atraso (1% ao mês). Faça um algoritmo que lê
+o valor de cada uma das contas e quantos dias estão atrasadas. Calcule e mostre o valor
+de cada conta paga e quanto restará do salário do João Felipe.
+*/
+void JoaoSeLascou_kkkk();
+
+
 
 int main() {
     // celcius_to_fahrenheit(100);
     // info_funcionario();
-    maiorNota();
+    // maiorNota();
+    // idadePessoa(2008, 2026);
+    JoaoSeLascou_kkkk();
     
     return 0;
 }
@@ -79,4 +102,45 @@ void maiorNota() {
     double result = ((nota1 * peso1) + (nota2 * peso2) + (nota3 * peso3)) / (peso1 + peso2 + peso3);
     
     printf("Media ponderada: %.2lf \n", result);
+}
+
+void idadePessoa(int anoNascimento, int anoAtual) {
+    int idadeEmAnos = anoAtual - anoNascimento;
+    printf("a) %d \n", idadeEmAnos);
+    
+    int idadeEmMeses = idadeEmAnos * 12;
+    printf("b) %d \n", idadeEmMeses);
+    
+    int idadeEmDias = idadeEmMeses * 365;
+    printf("c) %d \n", idadeEmDias);
+    
+    float idadeEmSemanas = idadeEmAnos * 52.1786;
+    printf("d) %f \n", idadeEmSemanas);
+}
+
+void JoaoSeLascou_kkkk() {
+    float salario = 1200.00;
+    float C1, C2;
+    int diasAtrasados;
+    
+    printf("Digite o valor a pagar da conta 1: ");
+    scanf("%f", &C1);
+
+    printf("Digite o valor a pagar da conta 2: ");
+    scanf("%f", &C2);
+    
+    printf("Quantos dias de atraso: ");
+    scanf("%d", &diasAtrasados);
+    
+    // calculando o 2% default
+    C1 += 2 * C1 / 100;
+    C2 += 2 * C2 / 100;
+    // 1/30/100 == 3000
+    C1 += C1 * diasAtrasados / 3000;
+    C2 += C2 * diasAtrasados / 3000;
+    
+    salario -= C1;
+    salario -= C2;
+    
+    printf("Voce vai ter que pagar: \nConta 1: %f \nConta 2: %f \nO seu salario ficou: %f", C1, C2, salario);
 }
