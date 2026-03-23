@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/teste_com_cmake.dir/link.d CMakeFiles/teste_com_cmake.dir/main.c.o CMakeFiles/teste_com_cmake.dir/src/libs.c.o -o teste_com_cmake
