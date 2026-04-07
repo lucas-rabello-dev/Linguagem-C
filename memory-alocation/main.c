@@ -10,6 +10,8 @@ void UsingCALLOC();
 
 void AlocVetor();
 
+void UsingRealloc();
+
 int main() {
     
     // alocando um int (4 bytes) e o endereco dessa memoria alocada fica em ptr (que eh o retorno da funcao)
@@ -34,6 +36,8 @@ int main() {
     UsingCALLOC();
     
     AlocVetor();
+
+    UsingRealloc();
     
     return 0;
 }
@@ -70,4 +74,31 @@ void AlocVetor() {
         printf("%d ", *(vetor + i));
     }
     
+}
+
+void UsingRealloc() {
+    // a funcao realloc() NAO aumenta o tamanho de um vetor/array
+    
+    int *vet, size;
+
+    printf("Enter the size of an array: ");
+    scanf("%d", &size);
+
+    vet = malloc(size * sizeof(int));
+
+    if (vet == NULL) {
+        printf("error in malloc");
+        return;
+    }
+
+    for (int i = 0; i < size; i++) {
+        *(vet + 1) = i; // aritimetica de ponteiros, adicionando valores dentro desse vetor
+    }
+    printf("vetor de tamanho: %d \n", size);
+
+
+    // mostrando os valores do vetor
+    for (int i = 0; i < size; i++) {
+        printf("%d ", *(vet + i));
+    }
 }
