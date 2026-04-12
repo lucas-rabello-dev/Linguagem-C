@@ -62,7 +62,7 @@ void AlocVetor() {
     int *vetor = malloc(10 * sizeof(int));
     
     if (vetor == NULL) {
-        printf("Erro ao alocar memoria!");
+        printf("Erro ao alocar memoria! \n");
         return;
     }
     
@@ -73,12 +73,12 @@ void AlocVetor() {
         // eh uma forma de percorrer um array
         printf("%d ", *(vetor + i));
     }
-    
+   printf("\n");
 }
 
 void UsingRealloc() {
     // a funcao realloc() NAO aumenta o tamanho de um vetor/array
-    
+    // esse *vet eh um ponteiro para o inicio do vetor 
     int *vet, size;
 
     printf("Enter the size of an array: ");
@@ -92,7 +92,7 @@ void UsingRealloc() {
     }
 
     for (int i = 0; i < size; i++) {
-        *(vet + 1) = i; // aritimetica de ponteiros, adicionando valores dentro desse vetor
+        *(vet + i) = i; // aritimetica de ponteiros, adicionando valores dentro desse vetor
     }
     printf("vetor de tamanho: %d \n", size);
 
@@ -101,4 +101,21 @@ void UsingRealloc() {
     for (int i = 0; i < size; i++) {
         printf("%d ", *(vet + i));
     }
+    printf("\n");
+
+    printf("Digite o novo tamanho para o array: ");
+    scanf("%d", &size);
+
+    // parametros: ponteiro inicial para o array, tamanho em bytes desse array 
+    // e a funcao retorna um ponteiro
+    vet = realloc(vet, size * sizeof(int));
+    if (vet == NULL) {
+       printf("erro ao usar a funcao realloc \n");
+       return; 
+    }
+    for (int i = 0; i < size; i++) {
+        printf("%d ", *(vet + i));
+    }
+
+    printf("\n");
 }
