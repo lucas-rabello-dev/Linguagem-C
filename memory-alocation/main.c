@@ -102,20 +102,22 @@ void UsingRealloc() {
         printf("%d ", *(vet + i));
     }
     printf("\n");
-
-    printf("Digite o novo tamanho para o array: ");
-    scanf("%d", &size);
-
     // parametros: ponteiro inicial para o array, tamanho em bytes desse array 
     // e a funcao retorna um ponteiro
     vet = realloc(vet, size * sizeof(int));
     if (vet == NULL) {
-       printf("erro ao usar a funcao realloc \n");
-       return; 
+        printf("Erro ao usar a funcao realoc \n");
+        return;
     }
-    for (int i = 0; i < size; i++) {
-        printf("%d ", *(vet + i));
-    }
+    // uma forma de usar o realloc, porem tratando um erro caso exista
 
-    printf("\n");
+    int *new_ptr = realloc(vet, 10);
+    if (new_ptr == NULL) {
+        printf("Erro ao alocar memoria usando o realloc (2 time) \n");
+        return;
+    }
+    // se nao der erro, mudamos os valores do primeiro ptr para o valor novo no qual o realloc "gerou"
+    vet = new_ptr;
+    size = 10;
+    // se a alocacao falhar evitamos de perder o endereco do primeiro ponteiro!
 }
