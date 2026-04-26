@@ -12,6 +12,10 @@ void AlocVetor();
 
 void UsingRealloc();
 
+void matriz();
+
+void matriz2();
+
 int main() {
     
     // alocando um int (4 bytes) e o endereco dessa memoria alocada fica em ptr (que eh o retorno da funcao)
@@ -38,6 +42,10 @@ int main() {
     AlocVetor();
 
     UsingRealloc();
+
+    matriz();
+
+    matriz2();
     
     return 0;
 }
@@ -120,4 +128,59 @@ void UsingRealloc() {
     vet = new_ptr;
     size = 10;
     // se a alocacao falhar evitamos de perder o endereco do primeiro ponteiro!
+}
+
+// memory leak
+void matriz() {
+    // ponteiro para ponteiro
+    int **matriz = malloc(4 * sizeof(int*));
+
+    if (matriz == NULL) {
+        printf("Erro ao alocar memoria (matriz)\n");
+        return;
+    } 
+    for (int i = 0; i < 4; i++) {
+        // ou tbm *(matriz + i) = 
+        matriz[i] = malloc(3 * sizeof(int));
+        if (matriz[i] == NULL) {
+            printf("Erro ao alocar memoria (matriz-2)\n");
+            return;
+        }
+    }
+    // i represenda a coluna, j representa a linha
+    // adicionando valores na matriz
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 3; j++) {
+            // ou *(*(matriz + i) + j) = 
+            matriz[i][j] = 1; // todas vao ter o valor 1
+        }
+    }
+    // mostrando os dados
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+    }
+    printf("\n");
+    free(matriz);
+}
+
+#define colunas 4 
+#define linhas 3
+void matriz2() {
+   // um array de ponteiros
+   int **mat = (int **)malloc(linhas *sizeof(int*));
+   // pra cada poneiro dentro do array, alocamos um numero de int(s)
+   for (int i = 0; i < linhas; i++) {
+       mat[i] = (int *)malloc(colunas * sizeof(int));
+   }
+   // tem esse exemplo que eh o melhor:
+   int *mat2 = malloc(linhas * colunas * sizeof(int));
+
+   int value = colunas * 2 + 1; // na segunda coluna o primeiro elemento
+
+   printf("%d", mat2[value]);
+
+   free(mat2);
+   free(mat);
 }
