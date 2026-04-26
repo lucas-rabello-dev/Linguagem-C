@@ -161,7 +161,9 @@ void matriz() {
             printf("%d ", matriz[i][j]);
         }
     }
+    for (int i = 0; i < 4; i++) { free(matriz[i]); } // liberando os elementos dentro da matriz
     printf("\n");
+
     free(matriz);
 }
 
